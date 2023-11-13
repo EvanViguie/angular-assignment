@@ -8,7 +8,7 @@
     }
   },
   "projects": {
-    "angular-assignement": {
+    "angular-assignment": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -18,7 +18,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/angular-assignement",
+            "outputPath": "dist/angular-assignment",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -63,10 +63,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "angular-assignement:build:production"
+              "buildTarget": "angular-assignment:build:production"
             },
             "development": {
-              "buildTarget": "angular-assignement:build:development"
+              "buildTarget": "angular-assignment:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -74,7 +74,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "angular-assignement:build"
+            "buildTarget": "angular-assignment:build"
           }
         },
         "test": {
