@@ -5,9 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8e1161ed-2630-4a15-9d81-8c38a7fa900d" name="Changes" comment="First commit">
-      <change afterPath="$PROJECT_DIR$/src/app/app.component.sass" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/angular.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/browser-sync-ui/lib/plugins/remote-debug/css/pesticide-depth.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/browser-sync-ui/lib/plugins/remote-debug/css/pesticide.css" beforeDir="false" />
@@ -125,7 +122,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1699866556561</updated>
-      <workItem from="1699866557563" duration="2320000" />
+      <workItem from="1699866557563" duration="2865000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <option name="closed" value="true" />
