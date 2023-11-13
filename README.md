@@ -1,3 +1,5 @@
+# Application Angular de recherche d'écoles
+
 Vous devez, à l’aide d’Angular et de toutes les notions apprises, développer une application front-end permettant de
 consulter et d’entrer en contact avec les établissements scolaires d’une municipalité.
 Pour cela, vous aurez besoin d’utiliser la librairie de cartographie de votre choix (Leaflet, Google Maps, etc.) ainsi que l’API
@@ -10,7 +12,8 @@ Votre application devra se focaliser sur une ville de votre choix, qui compte au
 ne pouvez pas utiliser d’autres librairies que celles présentes à l’installation d’Angular et Angular Material, ni d’autres API
 ou serveurs back-end que celui de l’annuaire de l’Éducation nationale.
 Votre code devra être au maximum fragmenté en composants ou services et ne présenter aucune duplication de code.
-Votre application devra :
+
+## Votre application devra :
 
 - avoir un header et un footer présents sur toutes les pages ;
 - utiliser un service pour les appels vers l’API afin d’y récupérer les informations en temps réel ;
