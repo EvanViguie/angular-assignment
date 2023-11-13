@@ -1,27 +1,25 @@
-# AngularAssignement
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.0.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Vous devez, à l’aide d’Angular et de toutes les notions apprises, développer une application front-end permettant de
+consulter et d’entrer en contact avec les établissements scolaires d’une municipalité.
+Pour cela, vous aurez besoin d’utiliser la librairie de cartographie de votre choix (Leaflet, Google Maps, etc.) ainsi que l’API
+« Annuaire de l’Éducation nationale ».
+Il s’agit d’une API publique, mise à disposition par l’administration dans le cadre du libre accès aux données (open access).
+–  Présentation de l’API : https://api.gouv.fr/les-api/api-annuaire-education
+–  Documentation de l’API : https://data.education.gouv.fr/explore/dataset/fr-en-annuaire-education/information/
+Votre application devra se focaliser sur une ville de votre choix, qui compte au moins trois établissements scolaires. Vous
+ne pouvez pas utiliser d’autres librairies que celles présentes à l’installation d’Angular et Angular Material, ni d’autres API
+ou serveurs back-end que celui de l’annuaire de l’Éducation nationale.
+Votre code devra être au maximum fragmenté en composants ou services et ne présenter aucune duplication de code.
+Votre application devra :
+–  avoir un header et un footer présents sur toutes les pages ;
+–  utiliser un service pour les appels vers l’API afin d’y récupérer les informations en temps réel ;
+–  afficher, sur une carte interactive, des marqueurs représentant les différents établissements.
+Le clic sur un marqueur fera apparaître le détail de l’établissement (nom, adresse, type d’établissement, statut) et un
+bouton « Contact ».
+Ce bouton redirigera vers une nouvelle page, avec un formulaire de réservation invitant l’utilisateur à :
+–  saisir son nom et son prénom ;
+–  renseigner son adresse e-mail ;
+–  saisir un objet de contact ;
+–  rédiger un message ;
+–  cocher une case pour accepter les conditions générales d’utilisation ;
+–  cliquer sur un bouton de validation.
+Ce formulaire demeure factice et ne déclenchera aucun envoi d’e-mail ou de message
