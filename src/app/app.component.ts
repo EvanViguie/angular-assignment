@@ -10,5 +10,5 @@ import { RouterOutlet } from '@angular/router';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'angular-assignement';
+  title = 'Localisateur d\'École';
 }
