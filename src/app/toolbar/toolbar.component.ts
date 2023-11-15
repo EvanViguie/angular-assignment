@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import {CommonModule, NgOptimizedImage} from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {RouterLink, RouterOutlet} from "@angular/router";
-
 
 @Component({
   selector: 'app-toolbar',
@@ -14,7 +13,6 @@ import {RouterLink, RouterOutlet} from "@angular/router";
     MatToolbarModule,
     RouterLink,
     RouterOutlet,
-    NgOptimizedImage
   ],
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.sass'
