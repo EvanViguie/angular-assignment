@@ -14,7 +14,13 @@ import {RouterLink, RouterOutlet} from "@angular/router";
     RouterLink,
     RouterOutlet,
   ],
-  templateUrl: './toolbar.component.html',
+  template: `
+      <mat-toolbar color="primary">
+          <a [routerLink]="['/']">
+              <img class="brand-logo" src="/assets/logo.svg" alt="Logo" aria-hidden="true">
+          </a>
+      </mat-toolbar>
+  `,
   styleUrl: './toolbar.component.sass'
 })
 export class ToolbarComponent {
