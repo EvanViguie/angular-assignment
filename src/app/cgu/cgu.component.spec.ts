@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CguComponent } from './cgu.component';
+import { CguContent } from './cgu.component';
 
 describe('CguComponent', () => {
-  let component: CguComponent;
-  let fixture: ComponentFixture<CguComponent>;
+  let component: CguContent;
+  let fixture: ComponentFixture<CguContent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CguComponent]
+      imports: [CguContent]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(CguComponent);
+
+    fixture = TestBed.createComponent(CguContent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
