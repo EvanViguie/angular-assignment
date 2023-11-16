@@ -11,27 +11,27 @@ import {MatButtonModule} from '@angular/material/button';
   imports: [CommonModule, RouterLink, RouterOutlet, CguContent, MatButtonModule],
   template:
     `
-      <footer class="footer-section">
-        <div class="col-xl-6 col-lg-6 text-center text-lg-left">
-          <div class="copyright-area">
-            <div class="copyright-text">
-              <p>&copy; 2023, Evan Viguié</p>
+        <footer class="footer-section">
+            <div>
+                <div class="copyright-area">
+                    <div class="copyright-text">
+                        <p>&copy; 2023, Evan Viguié</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="footer-menu">
+                        <ul>
+                            <li>
+                                <cgu-content></cgu-content>
+                            </li>
+                            <li>
+                                <button mat-button color="accent" [routerLink]="['/']">Accueil</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
-            <div class="footer-menu">
-              <ul>
-                <li>
-                  <cgu-content></cgu-content>
-                </li>
-                <li>
-                  <button mat-button color="accent" [routerLink]="['/']">Accueil</button>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </footer>
+        </footer>
     `,
   styleUrl: './footer.component.sass'
 })
