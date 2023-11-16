@@ -6,18 +6,22 @@ import {FooterComponent} from "./footer/footer.component";
 import {CguContent} from "./cgu/cgu.component";
 
 @Component({
-    selector: 'app-root',
-    standalone: true,
-    imports: [
-        CommonModule,
-        RouterOutlet,
-        ToolbarComponent,
-        FooterComponent,
-        CguContent
-    ],
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.sass']
+  selector: 'app-root',
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    ToolbarComponent,
+    FooterComponent,
+    CguContent
+  ],
+  template: `
+    <app-toolbar></app-toolbar>
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
+  `,
+  styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-    title = 'Localisateur d\'École';
+  title = 'Localisateur d\'École';
 }
