@@ -2,7 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
-import { MapInfoWindow, MapMarker} from "@angular/google-maps";
+import { MapInfoWindow} from "@angular/google-maps";
 import {Schooldetails} from "../schooldetails";
 
 @Component({
