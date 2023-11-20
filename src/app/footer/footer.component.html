@@ -1,0 +1,24 @@
+<!--
+Ce code est écrit en HTML et se trouve dans le fichier footer.component.html.
+Il s'agit d'un composant de pied de page contenant une section de droits d'auteur et un menu de navigation.
+Le composant affiche l'année de droits d'auteur et le nom de l'auteur, ainsi qu'un lien vers les conditions générales d'utilisation et un bouton de retour à la page d'accueil.
+-->
+<footer class="footer-section">
+    <div class="copyright-area">
+        <div class="copyright-text">
+            <p>&copy; 2023, Evan Viguié</p>
+        </div>
+    </div>
+    <div>
+        <div class="footer-menu">
+            <ul>
+                <li>
+                    <cgu-content></cgu-content>
+                </li>
+                <li>
+                    <button mat-button color="accent" [routerLink]="['/']">Accueil</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</footer>
