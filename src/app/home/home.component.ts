@@ -1,19 +1,21 @@
-import {Component} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {GoogleMapsDemoModule} from "../google-maps/google-maps.module";
+/**
+ * Résumé :
+ * Ce fichier contient la classe HomeComponent, qui est responsable de l'affichage de la page d'accueil de l'application.
+ * Il importe le module GoogleMaps et utilise le composant GoogleMaps pour afficher une carte sur la page d'accueil.
+ *
+ * Langage : TypeScript
+ */
+import { Component } from '@angular/core';
 
 @Component({
-    selector: 'app-home',
-    standalone: true,
-    imports: [
-        CommonModule,
-        GoogleMapsDemoModule
-    ],
-    template: `
-        <google-maps></google-maps>
-    `,
-    styleUrl: './home.component.sass'
+  standalone: true,
+  selector: 'app-home',
+  imports: [
+
+  ],
+  template: `
+  `,
+  styleUrls: ['./home.component.sass']
 })
 export class HomeComponent {
-
 }
