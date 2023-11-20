@@ -1,3 +1,9 @@
+/**
+ * Résumé :
+ * Ce fichier contient le composant AppComponent qui est responsable de l'affichage de l'application.
+ * Langage : TypeScript
+ */
+
 import {Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterOutlet} from '@angular/router';
@@ -16,12 +22,12 @@ import {CguContent} from "./cgu/cgu.component";
         CguContent
     ],
     template: `
-        <app-toolbar></app-toolbar>
-        <router-outlet></router-outlet>
-        <app-footer></app-footer>
+        <app-toolbar></app-toolbar> <! Affiche la barre d'outils de l'application >
+        <router-outlet></router-outlet> <! Affiche le contenu de l'application basé sur le routage >
+        <app-footer></app-footer> <! Affiche le pied de page de l'application >
     `,
     styleUrl: './app.component.sass'
 })
 export class AppComponent {
-    title = 'Localisateur d\'École';
+    title = 'Localisateur d\'École'; // Titre de l'application
 }
