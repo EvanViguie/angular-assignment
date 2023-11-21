@@ -5,17 +5,19 @@
  *
  * Langage : TypeScript
  */
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {MapComponent} from "../map/map.component";
 
 @Component({
-  standalone: true,
-  selector: 'app-home',
-  imports: [
-
-  ],
-  template: `
-  `,
-  styleUrls: ['./home.component.sass']
+    standalone: true,
+    selector: 'app-home',
+    imports: [
+        MapComponent
+    ],
+    template: `
+        <app-map></app-map>
+    `,
+    styleUrls: ['./home.component.sass']
 })
 export class HomeComponent {
 }
