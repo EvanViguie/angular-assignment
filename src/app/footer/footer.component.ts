@@ -1,10 +1,7 @@
 /**
- * Résumé :
  * Ce fichier contient le composant FooterComponent qui représente le pied de page de l'application.
  * Il importe les composants et modules nécessaires, tels que CommonModule, RouterLink, RouterOutlet, CguContent et MatButtonModule.
  * Le composant est utilisé pour afficher le pied de page de l'application.
- *
- * Langage : TypeScript
  */
 import {Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
