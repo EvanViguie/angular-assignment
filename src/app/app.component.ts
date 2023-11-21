@@ -22,9 +22,9 @@ import {CguContent} from "./cgu/cgu.component";
         CguContent
     ],
     template: `
-        <app-toolbar></app-toolbar> <! Affiche la barre d'outils de l'application >
-        <router-outlet></router-outlet> <! Affiche le contenu de l'application basé sur le routage >
-        <app-footer></app-footer> <! Affiche le pied de page de l'application >
+        <app-toolbar></app-toolbar> <!--Affiche la barre d'outils de l'application-->
+        <router-outlet></router-outlet> <!--Affiche le contenu de l'application basé sur le routage-->
+        <app-footer></app-footer> <!--Affiche le pied de page de l'application-->
     `,
     styleUrl: './app.component.sass'
 })
