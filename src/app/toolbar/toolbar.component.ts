@@ -1,7 +1,5 @@
 /**
- * Résumé :
  * Ce fichier contient le composant ToolbarComponent qui est responsable de l'affichage de la barre d'outils de l'application.
- * Langage : TypeScript
  */
 import {Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
