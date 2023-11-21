@@ -7,12 +7,14 @@ import {bootstrapApplication, provideProtractorTestingSupport} from '@angular/pl
 import {AppComponent} from './app/app.component';
 import {provideRouter} from '@angular/router';
 import routeConfig from './app/routes';
+import {provideHttpClient} from "@angular/common/http";
 
 bootstrapApplication(AppComponent,
   {
     providers: [
       provideProtractorTestingSupport(), // Fournit un support pour les tests avec Protractor
-      provideRouter(routeConfig) // Fournit la configuration des routes pour l'application
+      provideRouter(routeConfig), // Fournit la configuration des routes pour l'application
+      provideHttpClient(), // Fournit une instance de HttpClient.
     ]
   }
 ).catch((err) => console.error(err));
