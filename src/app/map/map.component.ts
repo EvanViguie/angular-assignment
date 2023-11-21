@@ -8,7 +8,6 @@
 import {Component, AfterViewInit, ChangeDetectionStrategy} from '@angular/core';
 import * as L from 'leaflet';
 import {MarkerService} from '../marker.service';
-import {DomSanitizer} from "@angular/platform-browser";
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
@@ -35,7 +34,7 @@ L.Marker.prototype.options.icon = iconDefault;
 export class MapComponent implements AfterViewInit {
   private map!: L.Map;
 
-  constructor(private markerService: MarkerService, private sanitizer: DomSanitizer) {
+  constructor(private markerService: MarkerService) {
   }
 
   private initMap(): void {
