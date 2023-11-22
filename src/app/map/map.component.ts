@@ -9,7 +9,6 @@ import {AfterViewInit, ChangeDetectionStrategy, Component} from '@angular/core';
 import * as L from 'leaflet';
 import {MarkerService} from '../marker.service';
 import {MatButtonModule} from "@angular/material/button";
-import {Router} from "@angular/router";
 
 
 const iconRetinaUrl: "assets/marker-icon-2x.png" = 'assets/marker-icon-2x.png';
