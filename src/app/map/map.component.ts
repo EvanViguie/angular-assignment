@@ -5,14 +5,17 @@
  * Ensuite, une couche de tuiles OpenStreetMap est ajoutée à la carte.
  * Le composant implémente l'interface AfterViewInit pour s'assurer que la carte est initialisée avant d'ajouter les marqueurs.
  */
-import {Component, AfterViewInit, ChangeDetectionStrategy} from '@angular/core';
+import {AfterViewInit, ChangeDetectionStrategy, Component} from '@angular/core';
 import * as L from 'leaflet';
 import {MarkerService} from '../marker.service';
+import {MatButtonModule} from "@angular/material/button";
+import {Router} from "@angular/router";
 
-const iconRetinaUrl = 'assets/marker-icon-2x.png';
-const iconUrl = 'assets/marker-icon.png';
-const shadowUrl = 'assets/marker-shadow.png';
-const iconDefault = L.icon({
+
+const iconRetinaUrl: "assets/marker-icon-2x.png" = 'assets/marker-icon-2x.png';
+const iconUrl: "assets/marker-icon.png" = 'assets/marker-icon.png';
+const shadowUrl: "assets/marker-shadow.png" = 'assets/marker-shadow.png';
+const iconDefault: L.Icon<L.IconOptions> = L.icon({
   iconRetinaUrl,
   iconUrl,
   shadowUrl,
@@ -25,6 +28,7 @@ const iconDefault = L.icon({
 L.Marker.prototype.options.icon = iconDefault;
 
 @Component({
+  imports: [MatButtonModule],
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrl: './map.component.sass',
@@ -34,7 +38,7 @@ L.Marker.prototype.options.icon = iconDefault;
 export class MapComponent implements AfterViewInit {
   private map!: L.Map;
 
-  constructor(private markerService: MarkerService) {
+  constructor(private markerService: MarkerService, private router: Router) {
   }
 
   private initMap(): void {
@@ -47,7 +51,7 @@ export class MapComponent implements AfterViewInit {
       zoom: z
     });
 
-    const tiles :L.TileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    const tiles: L.TileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 18,
       minZoom: 3,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -58,6 +62,6 @@ export class MapComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.initMap();
-    this.markerService.makeCapitalMarkers(this.map);
+    this.markerService.makeSchoolsMarkers(this.map);
   }
 }
