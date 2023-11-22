@@ -8,7 +8,7 @@ import {take} from "rxjs/operators";
     providedIn: 'root'
 })
 export class SchoolsService {
-    private url: string = "https://data.education.gouv.fr/api/explore/v2.1/catalog/datasets/fr-en-annuaire-education/records?"
+    private apiUrl: string = "https://data.education.gouv.fr/api/explore/v2.1/catalog/datasets/fr-en-annuaire-education/records?"
 
     constructor(
         private http: HttpClient,
@@ -16,8 +16,8 @@ export class SchoolsService {
     }
 
     async getSchoolDetailsById(id: string): Promise<Schooldetails | undefined> {
-        const url: string = `${this.url}refine=identifiant_de_l_etablissement%3A"${id}"`;
-        return this.http.get<{ results: Schooldetails[] }>(this.url)
+        const url: string = `${this.apiUrl}refine=identifiant_de_l_etablissement%3A"${id}"`;
+        return this.http.get<{ results: Schooldetails[] }>(url)
             .pipe(take(1))
             .toPromise()
             .then((res: { results: Schooldetails[] } | undefined): Schooldetails | undefined => {
