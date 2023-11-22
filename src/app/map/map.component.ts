@@ -38,7 +38,7 @@ L.Marker.prototype.options.icon = iconDefault;
 export class MapComponent implements AfterViewInit {
   private map!: L.Map;
 
-  constructor(private markerService: MarkerService, private router: Router) {
+  constructor(private markerService: MarkerService) {
   }
 
   private initMap(): void {
