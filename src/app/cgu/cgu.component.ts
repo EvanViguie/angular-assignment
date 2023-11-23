@@ -6,7 +6,7 @@ import {MatButtonModule} from '@angular/material/button';
 @Component({
   selector: 'cgu-content',
   template: `
-    <button mat-button color="accent" (click)="openDialog()">CGU</button>
+    <button mat-flat-button color="basic" (click)="openDialog()">CGU</button>
   `,
   standalone: true,
   imports: [MatButtonModule, MatDialogModule],
