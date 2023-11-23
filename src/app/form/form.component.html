@@ -1,0 +1,79 @@
+<article>
+  @defer (when schoolDetails) {
+    <!-- "Déférer" les détails de l'école jusqu'à ce qu'ils soient chargés -->
+    <section>
+      <h2>{{ schoolDetails?.nom_etablissement }}</h2>
+      <p> {{ schoolDetails?.adresse_1 }}</p>
+    </section>
+  } @placeholder {
+    <!-- Le contenu affiché pendant le chargement des détails de l'école -->
+    <section class="placeholder-section">
+      <h2 class="placeholder-text">Chargement...</h2>
+      <p class="placeholder-text">Chargement...</p>
+    </section>
+  }
+  <section class="contact">
+    <form class="contact-form" [formGroup]="applyForm" (ngSubmit)="submitContact()">
+      <table class="form-full-width">
+        <tr>
+          <td>
+            <mat-form-field appearance="outline" class="form-full-width">
+              <mat-label>Prénom</mat-label>
+              <input matInput formControlName="prenom" required>
+              @if (applyForm.hasError('required')) {
+                <mat-error>Le prénom est <strong>requis</strong></mat-error>
+              }
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field appearance="outline" class="form-full-width">
+              <mat-label>Nom</mat-label>
+              <input matInput formControlName="nom" required>
+              @if (applyForm.hasError('required')) {
+                <mat-error>Le nom est <strong>requis</strong></mat-error>
+              }
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+      <p>
+        <mat-form-field appearance="outline" class="form-full-width">
+          <mat-label>email</mat-label>
+          <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+          @if (applyForm.hasError('email') && !applyForm.hasError('required')) {
+            <mat-error>Entrez une adresse email valide</mat-error>
+          }
+          @if (applyForm.hasError('required')) {
+            <mat-error>Une adresse email est <strong>requise</strong></mat-error>
+          }
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="outline" class="form-full-width">
+          <mat-label>Objet</mat-label>
+          <input matInput formControlName="objet" required>
+          @if (applyForm.hasError('required')) {
+            <mat-error>L'objet est <strong>requis</strong></mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="form-full-width">
+          <mat-label>Message</mat-label>
+          <textarea matInput formControlName="message" required></textarea>
+          @if (applyForm.hasError('required')) {
+            <mat-error>Un message est <strong>requis</strong></mat-error>
+          }
+        </mat-form-field>
+      </p>
+      <mat-checkbox formControlName="cgu" required>J'accepte les
+        <cgu-content></cgu-content>
+      </mat-checkbox>
+      @if (applyForm.controls['cgu'].hasError('required')) {
+        <mat-error>Veuillez accepter les CGU</mat-error>
+      }
+      <br>
+      <button mat-flat-button type="submit" color="primary">Validez</button>
+    </form>
+  </section>
+</article>
