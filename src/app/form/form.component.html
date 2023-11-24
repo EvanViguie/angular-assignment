@@ -1,17 +1,14 @@
 <article>
-  @defer (when schoolDetails) {
-    <!-- "Déférer" les détails de l'école jusqu'à ce qu'ils soient chargés -->
-    <section>
-      <h2>{{ schoolDetails?.nom_etablissement }}</h2>
-      <p> {{ schoolDetails?.adresse_1 }}</p>
-    </section>
-  } @placeholder {
-    <!-- Le contenu affiché pendant le chargement des détails de l'école -->
+  <section *ngIf="schoolDetails; else loading">
+    <h2>{{ schoolDetails.nom_etablissement }}</h2>
+    <p> {{ schoolDetails.adresse_1 }}</p>
+  </section>
+  <ng-template #loading>
     <section class="placeholder-section">
       <h2 class="placeholder-text">Chargement...</h2>
       <p class="placeholder-text">Chargement...</p>
     </section>
-  }
+  </ng-template>
   <section class="contact">
     <form class="contact-form" [formGroup]="applyForm" (ngSubmit)="submitContact()">
       <table class="form-full-width">
@@ -19,7 +16,7 @@
           <td>
             <mat-form-field appearance="outline" class="form-full-width">
               <mat-label>Prénom</mat-label>
-              <input matInput formControlName="prenom" required>
+              <input matInput formControlName="firstName" required>
               @if (applyForm.hasError('required')) {
                 <mat-error>Le prénom est <strong>requis</strong></mat-error>
               }
@@ -28,7 +25,7 @@
           <td>
             <mat-form-field appearance="outline" class="form-full-width">
               <mat-label>Nom</mat-label>
-              <input matInput formControlName="nom" required>
+              <input matInput formControlName="lastName" required>
               @if (applyForm.hasError('required')) {
                 <mat-error>Le nom est <strong>requis</strong></mat-error>
               }
@@ -53,7 +50,7 @@
       <p>
         <mat-form-field appearance="outline" class="form-full-width">
           <mat-label>Objet</mat-label>
-          <input matInput formControlName="objet" required>
+          <input matInput formControlName="subject" required>
           @if (applyForm.hasError('required')) {
             <mat-error>L'objet est <strong>requis</strong></mat-error>
           }
@@ -66,10 +63,10 @@
           }
         </mat-form-field>
       </p>
-      <mat-checkbox formControlName="cgu" required>J'accepte les
-        <cgu-content></cgu-content>
+      <mat-checkbox formControlName="termsAndConditions" required>J'accepte les
+        <tnc-content></tnc-content>
       </mat-checkbox>
-      @if (applyForm.controls['cgu'].hasError('required')) {
+      @if (applyForm.controls['termsAndConditions'].hasError('required')) {
         <mat-error>Veuillez accepter les CGU</mat-error>
       }
       <br>
