@@ -6,15 +6,14 @@ import {Component} from '@angular/core';
 import {MapComponent} from "../map/map.component";
 
 @Component({
-    standalone: true,
-    selector: 'app-home',
-    imports: [
-        MapComponent
-    ],
-    template: `
-        <app-map></app-map>
-    `,
-    styleUrls: ['./home.component.sass']
+  standalone: true,
+  selector: 'app-home',
+  template: `
+      <app-map></app-map>
+  `,
+  imports: [
+    MapComponent
+  ]
 })
 export class HomeComponent {
 }
