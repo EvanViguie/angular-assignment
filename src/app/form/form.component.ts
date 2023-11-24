@@ -13,23 +13,22 @@ import {CommonModule} from '@angular/common';
 import {ActivatedRoute} from "@angular/router";
 import {SchoolsService} from "../schools.service";
 import {Schooldetails} from "../schooldetails";
-import {CguContent} from "../cgu/cgu.component";
-import {FormBuilder, FormGroup, FormsModule, Validators, ReactiveFormsModule} from '@angular/forms';
+import {TnCContent} from "../cgu/tnc.component";
+import {FormBuilder, FormGroup, FormControl, Validators, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCheckboxModule} from "@angular/material/checkbox";
 
-// Déclaration de notre composant avec son sélecteur, ses modules importés, et ses fichiers associés
+// Déclaration de notre composant avec son sélecteur, ses modules importés et ses fichiers associés
 @Component({
   selector: 'app-details',
   standalone: true,
   imports: [
     CommonModule,
-    CguContent,
+    TnCContent,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
     MatCheckboxModule,
@@ -41,25 +40,49 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 // Définition de la classe de notre composant
 export class FormComponent {
   // Déclaration de nos variables
-  schoolDetails: Schooldetails | undefined;
-  applyForm: FormGroup;
+  schoolDetails: Schooldetails | undefined; // Contient les détails de l'école
+  applyForm: FormGroup; // Contient le formulaire
 
-  // Construction de notre composant avec plusieurs services injéctés
+  // Construction de notre composant avec plusieurs services injectés
   constructor(private fb: FormBuilder, private route: ActivatedRoute, private schoolService: SchoolsService) {
-    // Création de notre formulaire avec plusieurs contrôles
-    this.applyForm = this.fb.group({
+    this.applyForm = this.createApplyForm(); // Création du formulaire
+    this.fetchSchoolDetails(); // Récupération des détails de l'école
+  }
+  // Méthode pour la création du formulaire
+  createApplyForm(): FormGroup {
+    return this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      nom: ['', [Validators.required]],
-      prenom: ['', [Validators.required]],
-      objet: ['', [Validators.required]],
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+      subject: ['', [Validators.required]],
       message: ['', [Validators.required]],
-      cgu: ['', [Validators.required]]
+      termsAndConditions: ['', [Validators.required]]
     });
-
-    // Récupération des détails de l'école
-    this.fetchSchoolDetails();
+  }
+  // Méthodes pour créer des contrôles formels
+  private createEmailControl(): FormControl {
+    return this.fb.control('', [Validators.required, Validators.email]);
   }
 
+  private createFirstNameControl(): FormControl {
+    return this.fb.control('', [Validators.required]);
+  }
+
+  private createLastNameControl(): FormControl {
+    return this.fb.control('', [Validators.required]);
+  }
+
+  private createSubjectControl(): FormControl {
+    return this.fb.control('', [Validators.required]);
+  }
+
+  private createMessageControl(): FormControl {
+    return this.fb.control('', [Validators.required]);
+  }
+
+  private createTnCControl(): FormControl {
+    return this.fb.control('', [Validators.required]);
+  }
   // Méthode pour récupérer les détails de l'école
   fetchSchoolDetails(): void {
     const schoolDetailId: string = this.route.snapshot.params['id'];
@@ -71,12 +94,12 @@ export class FormComponent {
   // Méthode pour soumettre le formulaire de contact
   submitContact(): void {
     this.schoolService.submitContact(
-      this.applyForm.value.prenom ?? '',
-      this.applyForm.value.nom ?? '',
+      this.applyForm.value.firstName ?? '',
+      this.applyForm.value.lastName ?? '',
       this.applyForm.value.email ?? '',
-      this.applyForm.value.objet ?? '',
+      this.applyForm.value.subject ?? '',
       this.applyForm.value.message ?? '',
-      this.applyForm.value.cgu ?? '',
+      this.applyForm.value.termsAndConditions ?? '',
     );
   }
 }
