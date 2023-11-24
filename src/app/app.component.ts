@@ -6,7 +6,7 @@ import {CommonModule} from '@angular/common';
 import {RouterOutlet} from '@angular/router';
 import {ToolbarComponent} from "./toolbar/toolbar.component";
 import {FooterComponent} from "./footer/footer.component";
-import {CguContent} from "./cgu/cgu.component";
+import {TnCContent} from "./cgu/tnc.component";
 
 @Component({
     selector: 'app-root',
@@ -16,7 +16,7 @@ import {CguContent} from "./cgu/cgu.component";
         RouterOutlet,
         ToolbarComponent,
         FooterComponent,
-        CguContent
+        TnCContent
     ],
     template: `
         <app-toolbar></app-toolbar> <!--Affiche la barre d'outils de l'application-->
