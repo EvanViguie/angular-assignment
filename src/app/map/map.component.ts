@@ -5,60 +5,90 @@
  * Ensuite, une couche de tuiles OpenStreetMap est ajoutée à la carte.
  * Le composant implémente l'interface AfterViewInit pour s'assurer que la carte est initialisée avant d'ajouter les marqueurs.
  */
-import {AfterViewInit, ChangeDetectionStrategy, Component} from '@angular/core';
+// TODO add comments
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import * as L from 'leaflet';
 import {MarkerService} from '../marker.service';
-import {MatButtonModule} from "@angular/material/button";
-const iconRetinaUrl: "assets/marker-icon-2x.png" = 'assets/marker-icon-2x.png';
-const iconUrl: "assets/marker-icon.png" = 'assets/marker-icon.png';
-const shadowUrl: "assets/marker-shadow.png" = 'assets/marker-shadow.png';
-const iconDefault: L.Icon<L.IconOptions> = L.icon({
-  iconRetinaUrl,
-  iconUrl,
-  shadowUrl,
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  tooltipAnchor: [16, -28],
-  shadowSize: [41, 41]
-});
-L.Marker.prototype.options.icon = iconDefault;
+import {Observable} from 'rxjs';
+import {Schooldetails} from "../schooldetails";
 
 @Component({
-  imports: [MatButtonModule],
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrl: './map.component.sass',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MapComponent implements AfterViewInit {
+
+export class MapComponent implements OnInit {
+  schoolData$: Observable<Schooldetails[]>;
   private map!: L.Map;
+  private readonly mapInitializationParams: { latitude: number, longitude: number, zoom: number, tileLayerURL: string } = {
+    latitude: 46.1568,
+    longitude: -1.1708,
+    zoom: 14,
+    tileLayerURL: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+  };
 
   constructor(private markerService: MarkerService) {
+    this.schoolData$ = this.markerService.fetchSchoolData();
+    this.setLeafletIcon();
   }
 
-  private initMap(): void {
-    let x: number = 46.1568;
-    let y: number = -1.1708;
-    let z: number = 14;
+  ngOnInit() : void {
+    this.initializeMap();
+    this.populateMarkersOnMap();
+  }
 
-    this.map = L.map('map', {
-      center: [x, y],
-      zoom: z
+  private populateMarkersOnMap():void {
+    this.schoolData$.subscribe({
+      next: (data : Schooldetails[]): void => {
+        this.markerService.addMarkers(data, this.map);
+      },
+      error: (error) => console.error(error),
+      complete: (): void => {}
     });
+  }
 
-    const tiles: L.TileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  private setLeafletIcon(): void {
+    const iconRetinaUrl: string = '/assets/map-marker.png';
+    const iconUrl: string = '/assets/map-marker.png';
+    const shadowUrl: string = 'assets/marker-shadow.png';
+    const iconSize: [number, number] = [41, 41];
+    const iconAnchor: [number, number] = [12, 41];
+    const popupAnchor: [number, number] = [1, -34];
+    const tooltipAnchor: [number, number] = [16, -28];
+    const shadowSize: [number, number] = [41, 41];
+
+    L.Marker.prototype.options.icon = L.icon({
+      iconRetinaUrl,
+      iconUrl,
+      shadowUrl,
+      iconSize,
+      iconAnchor,
+      popupAnchor,
+      tooltipAnchor,
+      shadowSize
+    });
+  }
+
+  private initializeMap(): void {
+    this.createAndConfigureLeafletMap();
+    this.addTileLayerToMap();
+  }
+
+  private createAndConfigureLeafletMap(): void {
+    this.map = L.map('map', {
+      center: [this.mapInitializationParams.latitude, this.mapInitializationParams.longitude],
+      zoom: this.mapInitializationParams.zoom
+    });
+  }
+
+  private addTileLayerToMap(): void {
+    L.tileLayer(this.mapInitializationParams.tileLayerURL, {
       maxZoom: 18,
       minZoom: 3,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    });
-
-    tiles.addTo(this.map);
-  }
-
-  ngAfterViewInit(): void {
-    this.initMap();
-    this.markerService.makeSchoolsMarkers(this.map);
+    }).addTo(this.map);
   }
 }
