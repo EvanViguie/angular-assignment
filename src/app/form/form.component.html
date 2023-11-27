@@ -1,3 +1,12 @@
+<!--
+Ce code est un template prévu pour afficher les détails d'une école ainsi qu'un formulaire de contact.
+Le détail de l'école est chargé de manière asynchrone, donc un écran de chargement est affiché pendant le chargement des données.
+Le formulaire de contact comprend des champs pour le prénom, nom, email, objet et message.
+ - Prénom, Nom, Objet et Message sont des champs obligatoires
+ - L'email doit être valide.
+Le formulaire ne peut être soumis que si toutes les conditions de validation sont remplies
+et que les conditions générales d'utilisation sont acceptées.
+-->
 <article>
   <section *ngIf="schoolDetails; else loading">
     <h2>{{ schoolDetails.nom_etablissement }}</h2>
