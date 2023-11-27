@@ -1,21 +1,28 @@
 /**
  * Ce fichier contient le composant FooterComponent qui représente le pied de page de l'application.
- * Nous avons importé les packages nécessaires pour ce composant, notamment 'Component' de '@angular/core' qui est essentiel pour tout composant Angular,
- * ainsi que 'RouterLink' et 'RouterOutlet' de '@angular/router' qui sont utilisés pour la navigation dans l'application.
- * 'TnCContent' fait référence à notre composant Conditions Générales d'Utilisation, et 'MatButtonModule' est un module
- * de Material Angular pour utiliser les boutons Material Design.
  */
+// Le module Component de @angular/core est nécessaire pour la création de nouvelles composantes Angular.
 import {Component} from '@angular/core';
+// Les modules RouterLink et RouterOutlet de @angular/router fournissent les
+// fonctionnalités de routage pour une application Angular
 import {RouterLink, RouterOutlet} from "@angular/router";
+// Importation du module 'TnCContent' de ../cgu/tnc.component
 import {TnCContent} from "../cgu/tnc.component";
+// Importation du module MatButtonModule de @angular/material/button pour les
+// manipulations liées au bouton de Material Design.
 import {MatButtonModule} from '@angular/material/button';
 
 @Component({
-    selector: 'app-footer',
-    standalone: true,
-    imports: [RouterLink, RouterOutlet, TnCContent, MatButtonModule],
-    templateUrl: './footer.component.html',
-    styleUrl: './footer.component.sass'
+  selector: 'app-footer',
+  standalone: true,
+  imports: [
+    RouterLink,
+    RouterOutlet,
+    TnCContent,
+    MatButtonModule
+  ],
+  templateUrl: './footer.component.html',
+  styleUrl: './footer.component.sass'
 })
 export class FooterComponent {
 }
