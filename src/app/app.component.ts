@@ -23,8 +23,6 @@ import {TnCContent} from "./cgu/tnc.component";
         <router-outlet></router-outlet> <!--Affiche le contenu de l'application basé sur le routage-->
         <app-footer></app-footer> <!--Affiche le pied de page de l'application-->
     `,
-    styleUrl: './app.component.sass'
 })
 export class AppComponent {
-    title = 'Localisateur d\'École'; // Titre de l'application
 }
