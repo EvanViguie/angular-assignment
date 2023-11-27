@@ -1,7 +1,5 @@
 /**
- * Résumé :
  * Ce fichier contient le code responsable du démarrage de l'application Angular.
- * Langage : TypeScript
  */
 import {bootstrapApplication} from '@angular/platform-browser';
 import {AppComponent} from './app/app.component';
